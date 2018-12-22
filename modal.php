@@ -304,7 +304,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="alterar--senha.php">
+                <form method="POST" action="alterar_senha.php">
                     <div class="input-group mb-3">
                         <input type="hidden" name="idAdministrador" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                                value="" >
@@ -320,7 +320,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
                         </div>
-                        <input type="text" name="nomeAdministrador" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite nome do novo administrador"
+                        <input type="text" name="nomeAdministrador" id="text_nome" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite nome do novo administrador"
                                value="" >
                     </div>
 
@@ -328,7 +328,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">Senha</span>
                         </div>
-                        <input type="text" name="senhaAdministrador" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite nova senha"
+                        <input type="text" name="senhaAdministrador"  id="text_senha" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite nova senha"
                                value="" >
                     </div>
 
@@ -336,11 +336,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
                         </div>
-                        <input type="text" name="emailAdministrador" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite novo e-mail">
+                        <input type="text" name="emailAdministrador" id="text_email" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" title="Digite novo e-mail">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" type="button" class="btn btn-success text-center" data-dismiss="modal"> Salvar </i></button>
+                        <input id="id_admin" name="id_admin" type="hidden" value=""/>
+                        <button type="submit" name="alt_senha" class="btn btn-success text-center"> Salvar </i></button>
                     </div>
                 </form>
             </div>
