@@ -143,9 +143,7 @@ spl_autoload_register("my_autoload");
                 }
                 rmdir($dir);
             }
-
-
-            //exclusao de soldado
+            
             if (isset($_POST['botaoexcluir'])) {
                 $id = $_POST['id_paraexcluir'];
                 $arquivo->delete($id);
