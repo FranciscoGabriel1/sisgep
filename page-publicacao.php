@@ -47,6 +47,20 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
           integrity="sha384-rf1bqOAj3+pw6NqYrtaE1/4Se2NBwkIfeYbsFdtiR6TQz0acWiwJbv1IM/Nt/ite" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css"
           integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
+
+    <style>
+        .tim {
+            border: 0;
+            padding: 0;
+            display: inline;
+            background: none;
+            text-decoration: none;
+            color: #0091EA;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <!-- oncontextmenu='return false' onselect='return false' ondragstart='return false' ||código para bloquear cópia de conteúdo-->
 <body class="back-body">
@@ -138,6 +152,55 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
             <?php $arquivo = new arquivo();
             $publicacao = new publicacao();
 
+
+            if(isset($_POST['verPDF'])){
+                $id = $_POST['idarquivo'];
+                $documento = $_POST['documento'];
+                ?>
+                <button type="button" data-toggle="modal"   data-target="#visualizar-pdf" class="btn btn-outline-primary waves-effect"><i class="far fa-eye"></i> Abrir o arquivo "<?php echo $documento; ?>"</button>
+
+
+<!--            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->
+<!--               data-target="#visualizar-pdf" href="#"-->
+<!--               style="color: black;">Visualizar</a>-->
+                <script>
+                    $(window).load(function(){
+                        $('#myModal').modal('show');
+                    });
+                </script>
+
+                <div class="modal fade" id="visualizar-pdf" tabindex="-1" role="dialog"
+                     aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-white" id="myModalLabel">Visualizar
+                                    Documento <?php echo $id . " / " . $documento; ?></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div style="text-align: center;">
+                                    <iframe
+                                            src="web/viewer.html?file=../arquivos/<?php echo $id; ?>/<?php echo $documento; ?>"
+                                            style="width:750px; height:700px;" frameborder="1">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success text-center"
+                                        data-dismiss="modal"> Fechar </i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <?php
+            }
+
             function RemoveDir($dir)
             {//essa função é para remover uma pasta e todos os arquivos que estiverem dentro dela
                 if ($x = opendir($dir)) {
@@ -190,37 +253,21 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                         <td>
 
 
-                            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"
-                               data-target="#visualizar-pdf" href="#"
-                               style="color: black;">Visualizar <?php echo $value->idArquivo . " " . $value->documento; ?></a>
+<!--                            <a class="btn btn-primary"  data-toggle="modal" title="Visualizar PDF"-->
+<!--                               data-target="#visualizar-pdf"-->
+<!--                               href="arquivos/--><?php //echo $value->idArquivo . "/" . $value->documento; ?><!--"-->
+<!--                               style="color: black;">Visualizar </a>-->
 
+                            <form method="post" action="" style="float: left; margin: 0 15px;">
+                                <input type="hidden" name="idarquivo" value="<?php  echo $value->idArquivo; ?>">
+                                <input type="hidden" name="documento" value="<?php  echo $value->documento; ?>">
+                                <button type="submit" title="Ver" name="verPDF" class="btn btn-success px-3"><i class="far fa-folder"></i> Visualizar</button>
+                            </form>
 
-                            <div class="modal fade" id="visualizar-pdf" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title text-white" id="myModalLabel">Visualizar
-                                                Documento <?php echo $value->idArquivo . " / " . $value->documento; ?></h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true" class="white-text">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div style="text-align: center;">
-                                                <iframe
-                                                        src="web/viewer.html?file=../arquivos/<?php echo $value->idArquivo; ?>/<?php echo $value->documento; ?>"
-                                                        style="width:750px; height:700px;" frameborder="1">
-                                                </iframe>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success text-center"
-                                                    data-dismiss="modal"> Fechar </i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->
+<!--                               data-target="#visualizar-pdf" href="#"-->
+<!--                               style="color: black;">Visualizar --><?php //echo $value->idArquivo . " " . $value->documento; ?><!--</a>-->
+
 
 
                             <?php
@@ -229,10 +276,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                                 <form class="form_excluir" method="post" style="float: left; margin: 0 15px;">
                                     <input name="id_paraexcluir" type="hidden"
                                            value="<?php echo $value->idArquivo; ?>"/>
-                                    <button name="botaoexcluir" type="submit" onclick="fn_excluir();"
-                                            class="btn btn-danger">
-                                        Excluir
-                                    </button>
+                                   <button name="botaoexcluir" title="Excluir arquivo" type="submit" onclick="fn_excluir();" class="btn btn-danger px-3"><i class="far fa-trash-alt"></i> Excluir</button>
                                 </form>
                             <?php } ?>
                         </td>
