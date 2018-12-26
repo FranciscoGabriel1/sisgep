@@ -103,7 +103,7 @@ spl_autoload_register("my_autoload");
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="tipo" required>
+                <select required class="custom-select" id="inputGroupSelect01" name="tipo" >
                     <option selected>Selecione o tipo do documento</option>
                     <option value="1">Memorando</option>
                     <option value="2">Ofício</option>
@@ -126,10 +126,47 @@ spl_autoload_register("my_autoload");
         <div style="margin: 100px 0; text-align: center">
             <?php $arquivo = new arquivo();
             $publicacao = new publicacao();
+
+            function RemoveDir($dir){
+                if($x = opendir($dir)){
+                    while(false !== ($file = readdir($x))){
+                        if($file != "." && $file != ".."){
+                            $path = $dir."/".$file;
+                            if(is_dir($path)){
+                                RemoveDir($path);
+                            }else if(is_file($path)){
+                                unlink($path);
+                            }
+                        }
+                    }
+                    closedir($x);
+                }
+                rmdir($dir);
+            }
+
+
             //exclusao de soldado
             if (isset($_POST['botaoexcluir'])) {
                 $id = $_POST['id_paraexcluir'];
                 $arquivo->delete($id);
+
+                $pasta = 'arquivos/'.$id;
+                RemoveDir($pasta);
+
+
+
+//                $uploaddir = "arquivos/" . $id;
+//                $dir_contents = scandir($uploaddir);
+//
+//                if (is_dir($uploaddir)) {
+//                    foreach ($dir_contents as $content) {
+//                        unlink($uploaddir . '/' . $content);
+//                        rmdir($uploaddir);
+//                        header('page-publicacao.php');
+//                    }
+//                }
+
+
             }
             ?>
             <!-- Fim form cadastrar --><!-- Inicio da tabela -->
