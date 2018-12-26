@@ -90,10 +90,12 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
     if (($_SESSION['user_id'] == $row_arquivos['administrador_idAdministrador']) || $row_arquivos['administrador_idAdministrador'] == "" || $_SESSION['user_id'] == 3) {
         ?>
         <!-- Button trigger modal -->
+        <div style="text-align: center;">
         <button type="button" class="btn btn-success" title="Envie um arquivo em formato PDF" data-toggle="modal"
-                data-target="#exampleModal" style="margin-left: 42%;">
+                data-target="#exampleModal">
             Adicionar Arquivo
         </button>
+        </div>
         <?php
     }
     ?>
@@ -147,8 +149,8 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
         </div>
     </div> <!-- FIM DO MODAL DE CADASTRAR ARQUIVO-->
     <!-- ******************************************************* TABELA COM INFORMAÇÕES DAS PUBLICAÇÕES*****************************************************************-->
-    <div style="margin: 100px 0; text-align: center">
-        <div style="margin: 100px 0; text-align: center">
+    <div style="margin: 10px 0; text-align: center">
+        <div style="margin: 30px 0; text-align: center">
             <?php $arquivo = new arquivo();
             $publicacao = new publicacao();
 
@@ -175,7 +177,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title text-white" id="myModalLabel">Visualizar
-                                    Documento <?php echo $id . " / " . $documento; ?></h4>
+                                    Documento <?php echo "\"".$documento."\""; ?></h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true" class="white-text">&times;</span>
                                 </button>
@@ -261,7 +263,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                             <form method="post" action="" style="float: left; margin: 0 15px;">
                                 <input type="hidden" name="idarquivo" value="<?php  echo $value->idArquivo; ?>">
                                 <input type="hidden" name="documento" value="<?php  echo $value->documento; ?>">
-                                <button type="submit" title="Ver" name="verPDF" class="btn btn-success px-3"><i class="far fa-folder"></i> Visualizar</button>
+                                <button type="submit" title="Procura e carrega o arquivo para poder exibí-lo" name="verPDF" class="btn btn-success px-3"><i class="far fa-folder"></i> Carregar</button>
                             </form>
 
 <!--                            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->
