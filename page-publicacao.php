@@ -91,11 +91,12 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
         ?>
         <!-- Button trigger modal -->
         <div style="text-align: center;">
-        <button type="button" class="btn btn-success" title="Envie um arquivo em formato PDF" data-toggle="modal"
-                data-target="#exampleModal">
-            Adicionar Arquivo
-        </button>
+            <button type="button" class="btn btn-success" title="Envie um arquivo em formato PDF" data-toggle="modal"
+                    data-target="#exampleModal">
+                Adicionar Arquivo
+            </button>
         </div>
+
         <?php
     }
     ?>
@@ -149,7 +150,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
         </div>
     </div> <!-- FIM DO MODAL DE CADASTRAR ARQUIVO-->
     <!-- ******************************************************* TABELA COM INFORMAÇÕES DAS PUBLICAÇÕES*****************************************************************-->
-    <div style="margin: 10px 0; text-align: center">
+    <div style="margin: 30px 0; text-align: center">
         <div style="margin: 30px 0; text-align: center">
             <?php $arquivo = new arquivo();
             $publicacao = new publicacao();
@@ -165,11 +166,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
 <!--            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->
 <!--               data-target="#visualizar-pdf" href="#"-->
 <!--               style="color: black;">Visualizar</a>-->
-                <script>
-                    $(window).load(function(){
-                        $('#myModal').modal('show');
-                    });
-                </script>
+          
 
                 <div class="modal fade" id="visualizar-pdf" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">

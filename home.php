@@ -47,6 +47,20 @@
             margin-top:15px;
         }
     </style>
+
+    <style>
+        .tim {
+            border: 0;
+            padding: 0;
+            display: inline;
+            background: none;
+            text-decoration: none;
+            color: #0091EA;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="back-body">
     <nav class="navbar nav-item navbar-expand-lg green darken-1">
