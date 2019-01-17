@@ -20,6 +20,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8 ">
+    <link rel="icon" href="img/icone-sisgep.png"/>
     <title>SisGeP •  Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -45,20 +46,6 @@
             font-size:16px;
             color:#0099CC;
             margin-top:15px;
-        }
-    </style>
-
-    <style>
-        .tim {
-            border: 0;
-            padding: 0;
-            display: inline;
-            background: none;
-            text-decoration: none;
-            color: #0091EA;
-        }
-        button:hover {
-            cursor: pointer;
         }
     </style>
 </head>

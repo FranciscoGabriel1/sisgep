@@ -30,6 +30,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/icone-sisgep.png"/>
     <title>SisGeP • Gerenciar Processo</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -82,7 +83,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
             <label style="font-size: 15pt; color: #4cae4c; padding-right: 10px;">Processo:</label><?php echo $row_publicacoes['numeroProcesso']; ?>
         </h3>
         <h5>
-            <label style="margin-left:60px;font-size: 15pt; color: #1b6d85;padding-right: 10px;">Descrição:</label><?php echo utf8_encode($row_publicacoes['descricao']); ?>
+            <label style="margin-left:60px;font-size: 15pt; color: #1b6d85;padding-right: 10px;">Descrição:</label><?php echo $row_publicacoes['descricao']; ?>
         </h5>
     </div>
     <!-- *************************************************************** BOTÃO ADICIONAR ARQUIVO ***************************************************************************-->
@@ -91,12 +92,11 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
         ?>
         <!-- Button trigger modal -->
         <div style="text-align: center;">
-            <button type="button" class="btn btn-success" title="Envie um arquivo em formato PDF" data-toggle="modal"
-                    data-target="#exampleModal">
-                Adicionar Arquivo
-            </button>
+        <button type="button" class="btn btn-success" title="Envie um arquivo em formato PDF" data-toggle="modal"
+                data-target="#exampleModal">
+            Adicionar Arquivo
+        </button>
         </div>
-
         <?php
     }
     ?>
@@ -132,12 +132,37 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                                 <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                             </div>
                             <select required class="custom-select" id="inputGroupSelect01" name="tipo">
-                                <option selected>Selecione o tipo do documento</option>
+                                <option> </option>
                                 <option value="1">Memorando</option>
                                 <option value="2">Ofício</option>
-                                <option value="4">Comunicado</option>
                                 <option value="3">Ata</option>
-                                <option value="5">Outro</option>
+                                <option value="4">Comunicado</option>
+                                <option value="5">Circular</option>
+                                <option value="6">Portaria</option>
+                                <option value="7">Pedido</option>
+                                <option value="8">Declaração</option>
+                                <option value="9">Relatório</option>
+                                <option value="10">Requerimento</option>
+                                <option value="11">Solicitação</option>
+                                <option value="12">Requisição</option>
+                                <option value="13">Autorização</option>
+                                <option value="14">Carta</option>
+                                <option value="15">Contrato</option>
+                                <option value="16">Balancete</option>
+                                <option value="17">Ficha</option>
+                                <option value="18">Formulário</option>
+                                <option value="19">Convênio</option>
+                                <option value="20">Notificação</option>
+                                <option value="21">Orçamento</option>
+                                <option value="22">Parecer</option>
+                                <option value="23">Proposta</option>
+                                <option value="24">Recibo</option>
+                                <option value="25">Tabelas</option>
+                                <option value="26">Normatização</option>
+                                <option value="27">Protocolado</option>
+                                <option value="28">Aviso</option>
+                                <option value="29">Boletim</option>
+                                <option value="30">Informativo</option>
                             </select>
                         </div>
                     </div>
@@ -150,7 +175,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
         </div>
     </div> <!-- FIM DO MODAL DE CADASTRAR ARQUIVO-->
     <!-- ******************************************************* TABELA COM INFORMAÇÕES DAS PUBLICAÇÕES*****************************************************************-->
-    <div style="margin: 30px 0; text-align: center">
+    <div style="margin: 10px 0; text-align: center">
         <div style="margin: 30px 0; text-align: center">
             <?php $arquivo = new arquivo();
             $publicacao = new publicacao();
@@ -160,13 +185,17 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                 $id = $_POST['idarquivo'];
                 $documento = $_POST['documento'];
                 ?>
-                <button type="button" data-toggle="modal"   data-target="#visualizar-pdf" class="btn btn-outline-primary waves-effect"><i class="far fa-eye"></i> Abrir o arquivo "<?php echo $documento; ?>"</button>
+                <button type="button" data-toggle="modal"   data-target="#visualizar-pdf" class="btn btn-outline-primary waves-effect"><i class="far fa-eye"></i> Visualizar o arquivo "<?php echo $documento; ?>"</button>
 
 
 <!--            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->
 <!--               data-target="#visualizar-pdf" href="#"-->
 <!--               style="color: black;">Visualizar</a>-->
-          
+                <script>
+                    $(window).load(function(){
+                        $('#myModal').modal('show');
+                    });
+                </script>
 
                 <div class="modal fade" id="visualizar-pdf" tabindex="-1" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">
@@ -232,7 +261,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                 <tr class="active">
                     <th>Autor</th>
                     <th>Tipo</th>
-                    <th>Data e Hora de publicação</th>
+                    <th>Data e Hora da Postagem</th>
                     <th>Arquivo</th>
                     <th>Ações</th>
                 </tr>
@@ -244,7 +273,7 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
                     $cont++; ?>
                     <tr>
                         <td><?php echo $value->nome; ?></td>
-                        <td><?php echo $value->tipoDocumento; ?></td>
+                        <td><?php echo utf8_encode($value->tipoDocumento); ?></td>
                         <td><?php echo $value->horaPublicacao; ?></td>
                         <td><?php echo $value->documento; ?></td>
 
@@ -257,10 +286,10 @@ $row_arquivos = mysqli_fetch_assoc($resultado_arquivos);
 <!--                               href="arquivos/--><?php //echo $value->idArquivo . "/" . $value->documento; ?><!--"-->
 <!--                               style="color: black;">Visualizar </a>-->
 
-                            <form method="post" action="" style="float: left; margin: 0 15px;">
+                            <form method="post" action="" style="float: left; margin: 0 30px;">
                                 <input type="hidden" name="idarquivo" value="<?php  echo $value->idArquivo; ?>">
                                 <input type="hidden" name="documento" value="<?php  echo $value->documento; ?>">
-                                <button type="submit" title="Procura e carrega o arquivo para poder exibí-lo" name="verPDF" class="btn btn-success px-3"><i class="far fa-folder"></i> Carregar</button>
+                                <button type="submit" title="Carregar o arquivo para visualizar" name="verPDF" class="btn btn-success px-3"><i class="far fa-folder"></i> Carregar</button>
                             </form>
 
 <!--                            <a class="btn btn-primary" data-toggle="modal" title="Visualizar PDF"-->

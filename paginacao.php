@@ -119,23 +119,22 @@ $pagina_posterior = $pagina + 1;
                             }
                             ?>
                             <div class="text-center py-2 card-text">
-                                <a class="container-fluid"
+                                <a class="container-fluid" title="Clique para acessar"
                                    href="page-publicacao.php?id_publicacao=<?php echo $rows_publicacoes['idPublicacao']; ?>&descricao=<?php echo $rows_publicacoes['descricao']; ?>&postador=<?php echo $_SESSION['user_id'] ?>"><?php echo $rows_publicacoes['numeroProcesso']; ?></a>
-                                <span class="badge badge-primary badge-pill"><?php echo $conta; ?></span>
+                                <span title="Quantidade de documentos disponível neste processo." class="badge badge-primary badge-pill"><?php echo $conta; ?></span>
                             </div>
                             <div id="box-toggle py-2">
                                 <div>
-                                    <?php echo " <p class=\" text-muted py-2 card-text\"> " . utf8_encode($rows_publicacoes['descricao'] ). "</p>"; ?>
+                                    <?php echo " <p class=\" text-muted py-2 card-text\"> " . $rows_publicacoes['descricao']. "</p>"; ?>
 
                                 </div>
                             </div>
                         </div>
 
                         <div class="card-footer">
-
                             <form method="post" class="form_excluir text-center">
                                 <input name="id_excluirprocesso" type="hidden" value="<?php echo $rows_publicacoes['idPublicacao']; ?>"/>
-                                <button type="submit" name="excluirprocesso" onclick="fn_excluir();" class="btn btn-danger">Excluir </button>
+                                <button type="submit" title="Excluirá o processo incluindo todos os documentos anexados." name="excluirprocesso" onclick="fn_excluir();" class="btn btn-danger">Excluir </button>
                             </form>
                             <?php //}
                             ?>

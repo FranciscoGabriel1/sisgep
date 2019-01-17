@@ -7,9 +7,9 @@ a:link
     text-decoration:none;
 }
 .banner{
-    height: 27px;
-    width: 28px;
-    margin-left: 10px;
+    height: 50px;
+    width: 50px;
+    margin-left: -15px;
 }
 .fechar{
     height: 30px;
@@ -69,12 +69,12 @@ a:link
     width: 28px;
 }
 
-.pagination{display:inline-block;padding-left:0;margin:20px 0;
+.pagination{display:inline-block;margin:20px 0;
     }.pagination>li{display:inline}
 .pagination>li>a,
 .pagination>li>span{position:relative;
     padding:10px;margin-left:-1px;
-    font-size: 1em;
+    font-size: 1.5em;
     color: #1c7430;
     }
 .pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;

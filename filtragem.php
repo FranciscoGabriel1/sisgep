@@ -78,6 +78,7 @@ $pagina_posterior = $pagina + 1;
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="img/icone-sisgep.png"/>
     <title>SisGeP • Departamentos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -149,7 +150,7 @@ $pagina_posterior = $pagina + 1;
                         </p>
                         <p class=" text-muted   card-text">Arquivo:  <label class="text-dark"> <?php echo $rows_arquivo['documento']; ?> </label>
                         </p>
-                        <p class=" text-muted  card-text">Tipo: <label class="text-dark"> <?php echo $rows_arquivo['tipoDocumento']; ?> </label>
+                        <p class=" text-muted  card-text">Tipo: <label class="text-dark"> <?php echo utf8_encode($rows_arquivo['tipoDocumento']); ?> </label>
                         </p>
                         <hr>
                         <p class="card-text text-muted">Postado por: <?php echo $rows_arquivo['nome']; ?> em <?php echo $rows_arquivo['horaPublicacao']; ?>

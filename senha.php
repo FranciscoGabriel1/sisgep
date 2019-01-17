@@ -37,6 +37,7 @@ if (isset($_GET['alteracao'])) {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8 ">
+    <link rel="icon" href="img/icone-sisgep.png"/>
     <title> SisGeP • Senhas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -87,8 +88,8 @@ if (isset($_GET['alteracao'])) {
             <thead>
             <tr>
                 <th class="text-center">ID</th>
-                <th class="text-center">Setor</th>
-                <th class="text-center">Nome</th>
+                <th class="text-center">Departamento/Setor</th>
+                <th class="text-center">Responsável</th>
                 <th class="text-center">Senha</th>
                 <th class="text-center">E-mail</th>
                 <th class="text-center">Ações</th>
@@ -103,8 +104,8 @@ if (isset($_GET['alteracao'])) {
                     <td><?php echo $dados["idAdministrador"]; ?></td>
                     <!-- utf8_encode() = usado para mostrar palavras com acento no resultado da consuulta com php-->
                     <td><?php echo utf8_encode($dados["setor_idSetor"]); ?></td>
-                    <td><?php echo $dados["nome"]; ?></td>
-                    <td><?php echo $dados["senha"]; ?></td>
+                    <td><?php echo utf8_encode($dados["nome"]); ?></td>
+                    <td><?php echo utf8_encode($dados["senha"]); ?></td>
                     <td><?php echo $dados["email"]; ?></td>
                     <td>
                         <form method="POST" data-toggle="modal" data-target="#msg-alterar-senha" href="#"

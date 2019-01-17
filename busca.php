@@ -65,6 +65,7 @@ $pagina_posterior = $pagina + 1;
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8 ">
+    <link rel="icon" href="img/icone-sisgep.png"/>
     <title>SisGeP • Pesquisar</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -139,10 +140,10 @@ $pagina_posterior = $pagina + 1;
             <div class="card-deck">
                 <div class=" card">
                      <div class="card-body text-justify">
-                        <p class=" text-muted ">Processo: &nbsp;<a href="page-publicacao.php?id_publicacao=<?php echo $rows_arquivo['idPublicacao']; ?>&postador=<?php echo $rows_arquivo['administrador_idAdministrador']; ?>"><?php echo $rows_arquivo['numeroProcesso']; ?></a><br></p>
-                        <label class="text-muted">Descrição: &nbsp; &nbsp;</label> <?php echo utf8_encode($rows_arquivo['descricao']); ?><br></p>
+                        <p class=" text-muted ">Processo: <a href="page-publicacao.php?id_publicacao=<?php echo $rows_arquivo['idPublicacao']; ?>&postador=<?php echo $rows_arquivo['administrador_idAdministrador']; ?>"><?php echo $rows_arquivo['numeroProcesso']; ?></a><br></p>
+                        <label class="text-muted">Descrição: </label> <?php echo $rows_arquivo['descricao']; ?><br></p>
                         <label class=" text-muted ">Arquivo: &nbsp;</label><?php echo $rows_arquivo['documento']; ?><br></p>
-                        <label class=" text-muted  ">Tipo: &nbsp;</label><?php echo $rows_arquivo['tipoDocumento']; ?>
+                        <label class=" text-muted  ">Tipo: &nbsp;</label><?php echo utf8_encode($rows_arquivo['tipoDocumento']); ?>
                         <p class="text-muted "> Departamento: <label class="text-dark"><?php echo $rows_arquivo['nomeSetor']; ?></label> </p>
                         <p class="text-muted py-1">Postado por: <?php echo $rows_arquivo['nome']; ?> em <?php echo $rows_arquivo['horaPublicacao']; ?></p>
                      </div>
@@ -177,5 +178,5 @@ if ($cont >= 1){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-
+</body>
 </html>
