@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Dez-2018 às 23:01
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 7.3.0
+-- Generation Time: 11-Fev-2019 às 20:33
+-- Versão do servidor: 10.1.35-MariaDB
+-- versão do PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sisgep`
 --
+CREATE DATABASE IF NOT EXISTS `sisgep` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `sisgep`;
 
 -- --------------------------------------------------------
 
@@ -41,13 +43,13 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`idAdministrador`, `setor_idSetor`, `nome`, `senha`, `email`) VALUES
-(1, 1, 'Usuário 1', '1234', 'fiscalizacao@gmail.com'),
-(2, 2, 'Usuário 2', '12345', 'zoneamento@gmail.com'),
-(3, 3, 'Administrador', '1234', 'admin@admin.com'),
-(4, 4, 'Usuário 3', '1234', 'milena@gmail.com'),
-(5, 5, 'Usuário 4', '1234', 'rubber@gmail.com'),
-(6, 6, 'Usuário 5', '1234', 'psicultura@gmail.com'),
-(7, 7, 'Usuário 6', '1234', 'juridico@gmail.com');
+(1, 1, 'Maik e Irene', '1234', 'maikelamide@gmail.com'),
+(2, 2, 'Gabriel Marinho', '12345', 'gb@gmail.com'),
+(3, 3, 'Admin', '1234', 'admin@admin.com'),
+(4, 4, 'Milena', '1234', 'milena@gmail.com'),
+(5, 5, 'rubber', '1234', 'rubber@gmail.com'),
+(6, 6, 'Fulano', '1234', 'psicultura@gmail.com'),
+(7, 7, 'Ciclano', '1234', 'juridico@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -69,10 +71,10 @@ CREATE TABLE `arquivo` (
 --
 
 INSERT INTO `arquivo` (`idArquivo`, `publicacao_idPublicacao`, `documento`, `tipo_idTipo`, `dataPublicacao`, `horaPublicacao`) VALUES
-(8, 3, 'formulario.pdf', 2, '0000-00-00', '2018-12-27 00:12:19'),
-(9, 3, ' T25.pdf', 2, '0000-00-00', '2018-12-27 00:12:39'),
-(10, 3, 'gabriel.pdf', 3, '0000-00-00', '2018-12-27 02:05:31'),
-(11, 3, '3-UML_DiagramasClasses[61-90].pdf', 0, '0000-00-00', '2018-12-30 20:13:34');
+(13, 3, 'gabriel.pdf', 0, '0000-00-00', '2019-01-03 14:55:42'),
+(14, 3, 'gabriel.pdf', 4, '0000-00-00', '2019-01-03 14:55:51'),
+(15, 5, 'LAUDO_BRB6K10533.pdf', 10, '0000-00-00', '2019-02-11 19:32:02'),
+(16, 5, 'atualizado Resultado_FINAL_Prova_061-2018.pdf', 3, '0000-00-00', '2019-02-11 19:32:36');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,9 @@ CREATE TABLE `publicacao` (
 --
 
 INSERT INTO `publicacao` (`idPublicacao`, `administrador_idAdministrador`, `numeroProcesso`, `descricao`) VALUES
-(3, 3, '001', 'teste1');
+(3, 3, '001', 'teste1'),
+(4, 3, '003', 'leon da novela'),
+(5, 1, '0002019', 'Am');
 
 -- --------------------------------------------------------
 
@@ -135,35 +139,10 @@ CREATE TABLE `tipo` (
 
 INSERT INTO `tipo` (`idTipo`, `tipoDocumento`) VALUES
 (1, 'Memorando'),
-(2, 'Ofício'),
+(2, 'Oficio'),
 (3, 'Ata'),
 (4, 'Comunicado'),
-(5, 'Circular'),
-(6, 'Portaria'),
-(7, 'Pedido'),
-(8, 'Declaração'),
-(9, 'Relatório'),
-(10, 'Requerimento'),
-(11, 'Solicitação'),
-(12, 'Requisição'),
-(13, 'Autorização'),
-(14, 'Carta'),
-(15, 'Contrato'),
-(16, 'Balancete'),
-(17, 'Ficha'),
-(18, 'Formulário'),
-(19, 'Convênio'),
-(20, 'Notificação'),
-(21, 'Orçamento'),
-(22, 'Parecer'),
-(23, 'Proposta'),
-(24, 'Recibo'),
-(25, 'Tabelas'),
-(26, 'Normatização'),
-(27, 'Protocolado'),
-(28, 'Aviso'),
-(29, 'Boletim'),
-(30, 'Informativo');
+(5, 'Outro');
 
 --
 -- Indexes for dumped tables
@@ -217,13 +196,13 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT for table `arquivo`
 --
 ALTER TABLE `arquivo`
-  MODIFY `idArquivo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idArquivo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `publicacao`
 --
 ALTER TABLE `publicacao`
-  MODIFY `idPublicacao` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPublicacao` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `setor`
@@ -235,7 +214,7 @@ ALTER TABLE `setor`
 -- AUTO_INCREMENT for table `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `idTipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `idTipo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
