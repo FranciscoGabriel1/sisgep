@@ -1,5 +1,3 @@
-
-
 <?php
 require_once 'config.php';
 class DB
@@ -23,3 +21,4 @@ class DB
         return self::getInstance()->prepare($sql);
     }
 }
+?>

@@ -1,8 +1,8 @@
-<?php function __autoload($class)
-{
-    require_once 'domain/' . $class . '.php';
-}
-$admin = new Administrador();
+<?php 
+	function __autoload($class){
+	require_once 'domain/' . $class . '.php';
+	}
+	$admin = new Administrador();
 
 if(isset($_POST['alt_senha'])){
     $admin_id = $_POST['id_admin'];
@@ -10,16 +10,17 @@ if(isset($_POST['alt_senha'])){
     $senha = $_POST['senhaAdministrador'];
     $email = $_POST['emailAdministrador'];
 
-    echo $admin_id."-".$nome ."-".$senha."-".$email;
+    //echo $admin_id."-".$nome ."-".$senha."-".$email;
 
     $admin->setNome($nome);
     $admin->setSenha($senha);
     $admin->setEmail($email);
 
-    if($admin->update($admin_id)){?>
-        <script>
-            alert('Alteração feita com sucesso!');
+    if($admin->update($admin_id)){?>  
+		<script>
+            alert('Altera\u00e7\u00e3o feita com sucesso!');
             document.location.href = 'senha.php';
-        </script>
+         </script>
     <?php }
 }
+?>

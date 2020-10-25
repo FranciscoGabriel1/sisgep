@@ -139,12 +139,5 @@ a:link
 .pager .disabled>span{
     color:#777;
     cursor:not-allowed;
-    background-color:#fff}
-
-.footer-login{
-    font-family: 'Roboto Light';
-    font-size: 13px;
-    text-align: center;
-    color: white;
-    margin-top: 40px;
+    background-color:#fff
 }

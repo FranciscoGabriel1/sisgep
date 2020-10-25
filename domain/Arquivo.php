@@ -16,8 +16,6 @@ class Arquivo extends Crud{
     private $documento;
     private $tipo_idTipo;
     private $horaPublicacao;
-
-
     private $tipoDocumento;
     private $nome;
 
@@ -184,3 +182,4 @@ WHERE publicacao_idPublicacao=$determinadoprocesso AND arquivo.idArquivo=$id";
 
 
 }
+?>

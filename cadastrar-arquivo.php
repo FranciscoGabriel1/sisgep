@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once './conexao_pdo.php';
+include_once 'conexao_pdo.php';
 require_once 'login/init.php';
 require 'login/check.php';
 

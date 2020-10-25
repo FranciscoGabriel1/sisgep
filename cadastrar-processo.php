@@ -20,11 +20,16 @@ if (isset($_POST['cadastrar'])):
     $publicacao->setDescricao($descricao);
 
     if ($publicacao->insert()) {
-        echo '<div class="alert alert-success alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>OK!</strong> Cadastrado com sucesso! </div>';
-
-        header("Location: home.php");
+	?>	
+		<script>
+            alert('Cadastro realizado com sucesso!');
+            document.location.href = 'home.php';
+        </script>
+		<?php		
+       //echo '<div class="alert alert-success alert-dismissible" role="alert">
+      //<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      //<strong>OK!</strong> Cadastrado com sucesso! </div>';
+//        header("Location: home.php");
     } else {
         echo '<div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

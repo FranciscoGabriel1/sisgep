@@ -1,44 +1,42 @@
 <?php
-session_start();
-require_once 'login/init.php';
-require 'login/check.php';
-?>
-<?php
-function my_autoload($class)
-{
-    require_once("domain./" . $class . ".php"); //include
-}
+	session_start();
+	require_once 'login/init.php';
+	require 'login/check.php';
 
-spl_autoload_register("my_autoload");
-?>
-<?php
-include_once("conexao_mysqli.php");
-$consulta = "SELECT idAdministrador, nome, senha, email, (SELECT nomeSetor FROM setor WHERE administrador.setor_idSetor=setor.idSetor) AS setor_idSetor FROM administrador";
-$conexao = mysqli_query($conn, $consulta);
-if (!$conexao) {
-    echo "Erro ao realizar consulta. Tente outra vez.";
-    exit;
-}
-$usuario = $_SESSION['user_id'];
+	function my_autoload($class){
+		require_once("domain./" . $class . ".php"); //include
+	}
+	spl_autoload_register("my_autoload");
 
-//<!-- Notificação -->
-//Se existe a variável alteração, então
-if (isset($_GET['alteracao'])) {
+	include_once("conexao_mysqli.php");
+	$consulta = "SELECT idAdministrador, nome, senha, email, (SELECT nomeSetor FROM setor 
+	WHERE administrador.setor_idSetor=setor.idSetor) AS setor_idSetor FROM administrador";
+	
+	$conexao = mysqli_query($conn, $consulta);
+		if (!$conexao) {
+			echo "Erro ao realizar consulta. Tente outra vez.";
+			exit;
+		}
+	$usuario = $_SESSION['user_id'];
+
+	//<!-- Notificação -->
+	//Se existe a variável alteração, então
+	if (isset($_GET['alteracao'])) {
     //Se status for TRUE, os dados foram alterados
-    if ($_GET['alteracao'] == 'true') {
-        echo "<p>Os dados foram alterados!</p>";
-        header("Location:senha.php");
-    } else {
-        echo "<p>Não possível alterar os dados!</p>";
-    }
-}
+		if ($_GET['alteracao'] == 'true') {
+			echo "<p>Os dados foram alterados!</p>";
+			header("Location:senha.php");
+		} else {
+			echo "<p>Não possível alterar os dados!</p>";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8 ">
+    <meta charset="UTF-8">
     <link rel="icon" href="img/icone-sisgep.png"/>
-    <title> SisGeP • Senhas</title>
+    <title> SisGeP • Gerenciar Senhas</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,41 +56,27 @@ if (isset($_GET['alteracao'])) {
 </head>
 <body class="back-body">
 <nav class="navbar nav-item navbar-expand-lg green darken-1">
-    <a class="nav-link active" title="Página Inicial" href="home.php"><i class="fas fa-home fa-2x"
-                                                                         style="color:white"></i>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <a class="nav-link active" title="Página Inicial" href="home.php"><i class="fas fa-home fa-2x" style="color:white"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link " data-toggle="modal" title="Ajuda" data-target="#ajuda" href="#" style="color: white;">Ajuda</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " data-toggle="modal" title="Sobre o SisGeP" data-target="#sobre" href="#"
-               style="color: white;">Sobre</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link " title="Encerrar Sessão" href="login/logout.php" style="color: white;"> Sair</a>
-        </li>
-    </ul>
-    <?php include "modal.php" ?>
-</nav>
+   <?php include "menu.php" ?>
+    </nav>
+	<?php include "modal.php" ?>
 <!-- Editable table -->
-<h4 class="card-header text-center font-weight-bold text-success py-4">Gerenciamento de senha dos administradores e seus
+<h4 class="card-header text-center font-weight-bold text-success py-4">Gerenciamento de Senhas dos Administradores e seus
     Departamentos/Setores</h4>
 <div class="card-body">
     <div id="table" class="table-editable">
         <table class="table table-bordered table-responsive-md table-striped text-center">
             <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th class="text-center">Departamento/Setor</th>
-                <th class="text-center">Responsável</th>
-                <th class="text-center">Senha</th>
-                <th class="text-center">E-mail</th>
-                <th class="text-center">Ações</th>
+            <tr bgcolor="#43a047">
+                <th class="text-center" ><font color="white">ID</font></th>
+                <th class="text-center" ><font color="white">Departamento/Setor</font></th>
+                <th class="text-center" ><font color="white">Responsável</font></th>
+                <th class="text-center" ><font color="white">Senha</font></th>
+                <th class="text-center" ><font color="white">E-mail</font></th>
+                <th class="text-center" ><font color="white">Ações</font></th>
             </tr>
             </thead>
             <tbody>
@@ -102,10 +86,10 @@ if (isset($_GET['alteracao'])) {
                 ?>
                 <tr>
                     <td><?php echo $dados["idAdministrador"]; ?></td>
-                    <!-- utf8_encode() = usado para mostrar palavras com acento no resultado da consuulta com php-->
-                    <td><?php echo utf8_encode($dados["setor_idSetor"]); ?></td>
-                    <td><?php echo utf8_encode($dados["nome"]); ?></td>
-                    <td><?php echo utf8_encode($dados["senha"]); ?></td>
+                    <!-- utf8_encode() = usado para mostrar palavras com acento no resultado da consulta com php-->
+                    <td><?php echo $dados["setor_idSetor"]; ?></td>
+                    <td><?php echo $dados["nome"]; ?></td>
+                    <td><?php echo $dados["senha"]; ?></td>
                     <td><?php echo $dados["email"]; ?></td>
                     <td>
                         <form method="POST" data-toggle="modal" data-target="#msg-alterar-senha" href="#"

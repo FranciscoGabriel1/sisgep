@@ -1,0 +1,35 @@
+body, html {
+    height: 100%;
+}
+.bg-login{
+    /* Image from index (login)*/
+    background-image: url(../img/background-login.jpg);
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.icon-login i{
+	position: absolute;
+	margin-top:10px;
+	margin-left:290px;
+	color: #00c851;
+}
+.footer-login{
+    font-family: 'Times';
+    font-size: 13px;
+    text-align: center;
+    color: white;
+    margin-top: 80px;
+}
+.margin-auto{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:100px;
+	margin-bottom:auto;
+}
+.ct0{ color: #ffffff;}
+.ct1{ color: #ffff00;}

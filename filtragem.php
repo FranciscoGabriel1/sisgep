@@ -146,11 +146,11 @@ $pagina_posterior = $pagina + 1;
                         <p class="text-muted py-1">
                            Processo:<a href="page-publicacao.php?id_publicacao=<?php echo $rows_arquivo['idPublicacao']; ?>&postador=<?php echo $rows_arquivo['administrador_idAdministrador']; ?>"><?php echo $rows_arquivo['numeroProcesso']; ?></a><br>
                         </p>
-                        <p class=" card-text text-muted ">Descrição:  <?php echo utf8_encode($rows_arquivo['descricao']); ?>
+                        <p class=" card-text text-muted ">Descrição:  <?php echo $rows_arquivo['descricao']; ?>
                         </p>
                         <p class=" text-muted   card-text">Arquivo:  <label class="text-dark"> <?php echo $rows_arquivo['documento']; ?> </label>
                         </p>
-                        <p class=" text-muted  card-text">Tipo: <label class="text-dark"> <?php echo utf8_encode($rows_arquivo['tipoDocumento']); ?> </label>
+                        <p class=" text-muted  card-text">Tipo: <label class="text-dark"> <?php echo $rows_arquivo['tipoDocumento']; ?> </label>
                         </p>
                         <hr>
                         <p class="card-text text-muted">Postado por: <?php echo $rows_arquivo['nome']; ?> em <?php echo $rows_arquivo['horaPublicacao']; ?>

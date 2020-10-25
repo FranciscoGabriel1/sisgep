@@ -1,4 +1,4 @@
-<!-- *************************************************************** MODAL ADICIONAR PROCESSO ***************************************************************************-->
+<!-- ====================== adicionar processo ====================== -->
 <div class="modal fade" id="adicionar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <?php
     if(isset($_SESSION['msg'])){
@@ -31,13 +31,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-                    <button name="cadastrar" type="submit" class="btn btn-success" value="Cadastrar Processo">Cadastrar processo</button>
+                    <button name="cadastrar" type="submit" class="btn btn-success" id="btn-mensagem" value="Cadastrar Processo">Cadastrar processo</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
-<!-- *************************************************************** MODAL PESQUISAR PROCESSO ***************************************************************************-->
+<!-- ====================== pesquisar processo ====================== -->
 <div class="modal fade" id="pesquisar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -50,7 +50,7 @@
             <div class="modal-body">
                 <form class="form-inline" method="GET" action="busca.php">
                     <label class="input-group">
-                    <input class="form-control" type="search" name="busca" placeholder="O quê você procura?" aria-label="Search" style="width: 18rem;" required>
+                    <input class="form-control" type="search" name="busca" placeholder="O que você procura?" aria-label="Search" style="width: 18rem;" required>
                     <button type="submit" class="btn btn-success">Pesquisar</button>
                     </label>
                 </form>
@@ -58,7 +58,7 @@
         </div>
     </div>
 </div>
-<!-- *************************************************************** MODAL SOBRE SISGEP ***************************************************************************-->
+<!-- ====================== sobre ====================== -->
 <div class="modal fade" id="sobre" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -115,14 +115,13 @@
             </div>
         </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-success text-center" data-dismiss="modal">
-                    OK! </i></button>
+                <button type="button" class="btn btn-success text-center" data-dismiss="modal"> OK </i></button>
             </div>
             <!--/.Content-->
         </div>
     </div>
 </div>
-<!-- *************************************************************** MODAL DEPARTAMENTO ***************************************************************************-->
+<!-- ====================== pesquisa por departamento ====================== -->
 <div class="modal fade" id="setores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -172,7 +171,7 @@
     </div>
 </div>
 </div>
-<!-- *************************************************************** MODAL AJUDA SOBRE SISTEMA ********************************************************************-->
+<!-- ====================== ajuda ====================== -->
 <!--Carousel Wrapper-->
 <div class="modal fade" id="ajuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-success modal-dialog-centered" role="document">
@@ -245,31 +244,8 @@
         </div>
     </div>
 </div>
-<!-- *************************************************************** MODAL VISUALIZAR PDF ***************************************************************************-->
-<!--<div class="modal fade" id="visualizar-pdf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
-<!--    <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered">-->
-<!--        <div class="modal-content">-->
-<!--            <div class="modal-header">-->
-<!--                <h4 class="modal-title text-white" id="myModalLabel">Visualizar Documento</h4>-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                    <span aria-hidden="true" class="white-text">&times;</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="modal-body">-->
-<!--                <div style="text-align: center;">-->
-<!--                    <iframe-->
-<!--                            src="web/viewer.html?file=../arquivos/0/Artigo do Classificador.pdf" style="width:750px; height:700px;" frameborder="1">-->
-<!--                    </iframe>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="modal-footer">-->
-<!--                <button type="button" class="btn btn-success text-center" data-dismiss="modal"> Fechar </i></button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
-<!-- *************************************************************** MODAL MSG ERRO LOGIN ***************************************************************************-->
+<!-- ====================== erro de login ====================== -->
 <div class="modal fade" id="msg-erro-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered">
         <div class="modal-content">
@@ -292,8 +268,7 @@
         </div>
     </div>
 </div>
-<!-- *************************************************************** MODAL ALTERAR SENHA ***************************************************************************-->
-
+<!-- ====================== alterar senha ====================== -->
 <div class="modal fade" id="msg-alterar-senha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-notify modal-success modal-dialog-centered">
         <div class="modal-content">
@@ -348,3 +323,4 @@
         </div>
     </div>
 </div>
+<!-- ====================== adicionar processo ====================== -->

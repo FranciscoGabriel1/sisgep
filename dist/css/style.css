@@ -68,9 +68,6 @@ body, html {
 .back { text-align: left; margin-top:10px;}
 .back a {color: #444444; font-size: 13px;text-decoration: none}
 
-
-
-
 .form-group input{
     height: 42px;
     border-radius: 5px;
@@ -78,9 +75,18 @@ body, html {
     font-size: 18px;
     letter-spacing: 2px;
     padding-left: 54px;
-
-
 }
+
+.form-group2 input{
+    height: 38px;
+    border-radius: 5px;
+    font-size: 17px;
+    letter-spacing: 0px;
+    padding-left: 10px;
+}
+
+
+
 .form-elegant .font-small {
     font-size: 0.8rem; }
 
